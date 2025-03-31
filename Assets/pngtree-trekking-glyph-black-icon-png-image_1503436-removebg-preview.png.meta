@@ -172,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pngtree-trekking-glyph-black-icon-png-image_1503436-removebg-preview_0: 6791752938950153910
+      pngtree-trekking-glyph-black-icon-png-image_1503436-removebg-preview_1: -7819050924922531815
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

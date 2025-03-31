@@ -1,9 +1,11 @@
-using UnityEditor.Experimental.GraphView;
+using UnityEditor.Experimental;
 using UnityEngine;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
     
+    public AudioSource woof1;
+    public AudioSource woof2;
     public SpriteRenderer spriteRenderer;
 
     public Sprite walking_sprite;
@@ -74,6 +76,14 @@ public class NewMonoBehaviourScript : MonoBehaviour
                 {
                     target_x = (owner_transform.position.x + gameObject.GetComponent<Transform>().position.x)/2 + UnityEngine.Random.Range(-1f, 1f);
                     target_location = new Vector3(target_x, 0, 0);
+                    if (UnityEngine.Random.Range(0f, 1f) > .5)
+                    {
+                        woof1.Play();
+                    }
+                    else
+                    {
+                        woof2.Play();
+                    }
                     State = DOG_STATES.RUNNING_BACK;
 
                     //Debug.Log("happened");
@@ -83,6 +93,14 @@ public class NewMonoBehaviourScript : MonoBehaviour
                 {
                     target_x = (owner_transform.position.x + gameObject.GetComponent<Transform>().position.x)/2 + UnityEngine.Random.Range(-1f, 1f);
                     target_location = new Vector3(target_x, 0, 0);
+                    if (UnityEngine.Random.Range(0f, 1f) > .5)
+                    {
+                        woof1.Play();
+                    }
+                    else
+                    {
+                        woof2.Play();
+                    }
                     State = DOG_STATES.RUNNING_BACK;
                 }
 

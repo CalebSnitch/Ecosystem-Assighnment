@@ -1,8 +1,11 @@
-using UnityEditor.Experimental.GraphView;
+using UnityEditor.Experimental;
 using UnityEngine;
 
 public class Hiker : MonoBehaviour
 {
+    public AudioSource hey1;
+    public AudioSource hey2;
+    
     public SpriteRenderer spriteRenderer;
     public Sprite walking_sprite;
     public Sprite sleeping_sprite;
@@ -75,6 +78,14 @@ public class Hiker : MonoBehaviour
                     if (collided_object.GetComponent<Hiker>().has_talked == false)
                     {
                         talking_timer = 0;
+                        if(hikingDirection == 1)
+                        {
+                            hey1.Play();
+                        }
+                        else
+                        {
+                            hey2.Play();
+                        }
                         State = HIKER_STATES.TALKING;
                         //Debug.Log("Happened");
                     }
@@ -83,7 +94,7 @@ public class Hiker : MonoBehaviour
                  if (Manager_Script.timeOfDay > 21)
                 {
                     State = HIKER_STATES.SLEEPING;
-                    Debug.Log("happened");
+                    //Debug.Log("happened");
                 }
 
                 break;

@@ -9,7 +9,8 @@ using UnityEngine;
 public class UFO : MonoBehaviour
 {
      
-      
+      public AudioSource Alien_noises;
+      public AudioSource Beam;
     public float target_x;
 
     public float target_y;
@@ -49,6 +50,7 @@ public class UFO : MonoBehaviour
                 target_location = new Vector3(target_x, target_y, 0);
                 State = UFO_STATES.WANDERING;
                 //Debug.Log("happened");
+                Alien_noises.Play();
                 break;
 
             case UFO_STATES.WANDERING:
@@ -104,10 +106,14 @@ public class UFO : MonoBehaviour
             case UFO_STATES.INVISIBLE:
                 this.GetComponent<SpriteRenderer>().color = new Color (1f, 1f, 1f, .25f);
 
+                Alien_noises.Pause();
+
+
                 //transition:
                 if (Manager_Script.timeOfDay > 21)
                 {
                     this.GetComponent<SpriteRenderer>().color = new Color (1f, 1f, 1f, 1f);
+                    Alien_noises.Play();
                     State = UFO_STATES.WANDERING_CHOOSING;
                 }
                 break;
@@ -137,6 +143,7 @@ public class UFO : MonoBehaviour
                 if (transform.position == target_location)
                 {
                     abductee.GetComponent<Hiker>().State = Hiker.HIKER_STATES.ABDUCTED;
+                    Beam.Play();
                     State = UFO_STATES.ABDUCTING;
                 }
 
@@ -157,6 +164,7 @@ public class UFO : MonoBehaviour
                     target_x = 0;
                     target_y = 10;
                     target_location = new Vector3(0, 10, 0);
+                    Beam.Pause();
                     State = UFO_STATES.LEAVING;
                 }
                 break;
